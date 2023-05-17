@@ -1,0 +1,68 @@
+﻿@page
+@model Hephaestus_Project.Pages.Users.CreateModel
+@{
+}
+
+<div class="text-center">
+    <h1>New User</h1>
+</div>
+@if (Model.success)
+{
+    <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>New User Added Successfully</strong>
+            </div>
+        </div>
+    </div>
+}
+@if(Model.error != "NULL")
+{
+  <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>@Model.error</strong>
+            </div>
+        </div>
+   </div>  
+}
+<form method="post">
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.Name"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.Name" value="" />
+            <span class="text-danger" asp-validation-for="input.Name"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.Surname"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.Surname" value="" />
+            <span class="text-danger" asp-validation-for="input.Surname"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.Division"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.Division" value="" />
+            <span class="text-danger" asp-validation-for="input.Division"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.Rank"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.Rank" value="" />
+            <span class="text-danger" asp-validation-for="input.Rank"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

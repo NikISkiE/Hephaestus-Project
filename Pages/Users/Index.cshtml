@@ -1,0 +1,46 @@
+﻿@page
+@model Hephaestus_Project.Pages.Users.UsersModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Users</h1>
+</div>
+<a class="btn btn-primary btn-sm" href="/Users/Create">New User</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>SURNAME</th>
+            <th>DIVISION</th>
+            <th>RANK</th>
+            <th>ACCOUNT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.ListUsers)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Division</td>
+                <td>@item.Rank</td>
+                <td>@if (item.AccountID == null)
+                    {
+                        <a class="btn btn-primary btn-sm" href="/Account/Create?id=@item.Id">Create Account</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info btn-sm" href="/Account/Index?id=@item.AccountID">Show Account</a>
+                    }
+                    </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Users/Edit?id=@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Users/Delete?id=@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
