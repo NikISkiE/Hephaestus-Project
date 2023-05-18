@@ -27,13 +27,14 @@
                 <td>@item.Surname</td>
                 <td>@item.Division</td>
                 <td>@item.Rank</td>
-                <td>@if (item.AccountID == null)
+                <td>@if (item.IsRegistered != 0)
                     {
-                        <a class="btn btn-primary btn-sm" href="/Account/Create?id=@item.Id">Create Account</a>
+                        <a class="btn btn-info btn-sm" href="/Account/Index?id=@item.IsRegistered">Show Account</a>
+
                     }
                     else
                     {
-                        <a class="btn btn-info btn-sm" href="/Account/Index?id=@item.AccountID">Show Account</a>
+                        <a class="btn btn-primary btn-sm" href="/Account/Create?id=@item.Id">Create Account</a>
                     }
                     </td>
                 <td>

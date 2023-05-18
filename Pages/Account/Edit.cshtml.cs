@@ -1,23 +1,25 @@
 using Hephaestus_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
-using Hephaestus_Project.Models;
-using Microsoft.AspNetCore.Authorization;
+using System.Data.SqlClient;
 
 namespace Hephaestus_Project.Pages.Account
 {
     [Authorize(Policy = "MustBeAtleastQuater")]
-    public class IndexModel : PageModel
+    public class EditModel : PageModel
     {
         [BindProperty]
         public AccountInfo input { get; set; }
+        public bool success = false;
+        public string error = "NULL";
         private readonly IConfiguration Configuration;
 
-        public IndexModel(IConfiguration configuration)
+        public EditModel(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
         public void OnGet()
         {
             input = new AccountInfo();
@@ -41,8 +43,6 @@ namespace Hephaestus_Project.Pages.Account
                                 input.Login = reader.GetString(1);
                                 input.Password = reader.GetString(2);
                                 input.PermLVL = reader.GetInt32(3).ToString();
-                                input.Created_At = reader.GetDateTime(4).ToString();
-                                input.UserID = (reader.IsDBNull(5))? "NULL" : reader.GetInt32(5).ToString();
                             }
                         }
                     }
@@ -51,8 +51,48 @@ namespace Hephaestus_Project.Pages.Account
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //error
+                error = "Something Went Wrong";
+                return;
             }
         }
+
+        public void OnPost()
+        {
+            //no empty field
+            if (input.Login == null || input.Password == null || input.PermLVL == null)
+            {
+                error = "Fill All Empty Spaces";
+                return;
+            }
+            //Another DB Connection
+            try
+            {
+                var constring = Configuration["ConnectionStrings:DefaultString"];
+                using (SqlConnection connection = new SqlConnection(constring))
+                {
+                    connection.Open();
+                    String sql = "UPDATE AccountData " +
+                                 $"SET login='{input.Login}', password='{input.Password}', permlvl='{input.PermLVL}'" +
+                                 $"WHERE id={input.Id}";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //error
+                error = "Something Went Wrong";
+                return;
+            }
+
+            Response.Redirect($"/Account/Index?id={input.Id}");
+
+        }
+
     }
 }
+

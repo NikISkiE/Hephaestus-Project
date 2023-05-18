@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Hephaestus_Project.Models;
 using Microsoft.Data.SqlClient;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hephaestus_Project.Pages.Users
 {
+    [Authorize(Policy = "MustBeAtleastCom")]
     public class EditModel : PageModel
     {
         [BindProperty]
@@ -43,7 +45,6 @@ namespace Hephaestus_Project.Pages.Users
                                 input.Surname = reader.GetString(2);
                                 input.Division = reader.GetString(3);
                                 input.Rank = reader.GetString(4);
-                                input.AccountID = reader["accountid"] as string;
                             }
                         }
                     }

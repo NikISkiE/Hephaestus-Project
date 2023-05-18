@@ -1,6 +1,6 @@
 ﻿@page
 @using System.Data.SqlClient;
-@using Microsoft.Extensions.Configuration;
+@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @{
 
@@ -12,7 +12,7 @@
         using (SqlConnection connection = new SqlConnection(constring))
         {
             connection.Open();
-            String sql = "DELETE FROM UserData WHERE id=@id";
+            String sql = "DELETE FROM AccountData WHERE id=@id";
             using (SqlCommand command = new SqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue("id", id);
@@ -23,9 +23,8 @@
         }
     }
     catch (Exception ex)
-    {       
+    {
     }
 
     Response.Redirect("/Users/Index");
 }
-

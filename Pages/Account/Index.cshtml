@@ -5,6 +5,7 @@
 <div class="text-center">
     <h1 class="display-4">User Account</h1>
 </div>
+<a class="btn btn-primary btn-sm" href="/Users/Index">Back</a>
 <table class="table">
     <thead>
         <tr>
@@ -23,8 +24,8 @@
                 <td>@Model.input.PermLVL</td>
                 <td>@Model.input.Created_At</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Users/Edit?id=@Model.input.Id">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/Users/Delete?id=@Model.input.Id">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/Account/Edit?id=@Model.input.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Account/Delete?id=@Model.input.Id">Delete</a>
                 </td>
              </tr>       
     </tbody>

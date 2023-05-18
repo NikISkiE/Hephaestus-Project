@@ -1,4 +1,5 @@
 using Hephaestus_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
@@ -6,6 +7,7 @@ using System.Data.SqlClient;
 
 namespace Hephaestus_Project.Pages.Account
 {
+    [Authorize(Policy = "MustBeAtleastQuater")]
     public class CreateModel : PageModel
     {
         [BindProperty]
@@ -50,24 +52,6 @@ namespace Hephaestus_Project.Pages.Account
                         command.ExecuteNonQuery();
                     }
 
-                    //find related userdata
-                    sql = $"SELECT id FROM AccountData WHERE userid={input.UserID}";
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                input.Id ="" + reader.GetInt32(0);
-                            }
-                        }
-                    }
-                    //make relation
-                    sql = $"UPDATE UserData SET accountid={input.Id} WHERE id={input.UserID}";
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.ExecuteNonQuery();
-                    }
                 }
             }
             catch (Exception ex)
@@ -81,7 +65,7 @@ namespace Hephaestus_Project.Pages.Account
             //success
             success = true;
 
-            Response.Redirect("/Account/Index");
+            Response.Redirect("/Users/Index");
         }
     }
 }

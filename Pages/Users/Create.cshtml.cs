@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Hephaestus_Project.Models;
 using Microsoft.Build.Framework;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hephaestus_Project.Pages.Users
 {
+    [Authorize(Policy = "MustBeAtleastCom")]
     public class CreateModel : PageModel
     {
         [BindProperty]

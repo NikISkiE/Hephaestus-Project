@@ -13,7 +13,7 @@ namespace Hephaestus_Project.Models
         public string Division { get; set; }
         [Required]
         public string Rank { get; set; }
-        public string AccountID { get; set; } = "NULL";
+        public int IsRegistered { get; set; } = 0;
 
     }
 }

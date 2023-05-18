@@ -6,7 +6,7 @@ using Hephaestus_Project.Models;
 
 namespace Hephaestus_Project.Pages.Users
 {
-    [Authorize(Policy = "MustBeAtleastQuater")]
+    [Authorize(Policy = "MustBeAtleastCom")]
     public class UsersModel : PageModel
     {
         private readonly IConfiguration Configuration;
@@ -39,9 +39,22 @@ namespace Hephaestus_Project.Pages.Users
                                 claims.Surname = reader.GetString(2);
                                 claims.Division = reader.GetString(3);
                                 claims.Rank = reader.GetString(4);
-                                claims.AccountID = reader["accountid"] as string;
-
+                               
                                 ListUsers.Add(claims);
+                            }
+                        }
+                    }
+                    foreach (UserInfo claims in ListUsers)
+                    {
+                        sql = $"SELECT id FROM AccountData WHERE userid={claims.Id}";
+                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        {                      
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if(reader.Read())
+                                {
+                                    claims.IsRegistered = (reader.GetInt32(0) == null) ? 0:reader.GetInt32(0);
+                                }
                             }
                         }
                     }

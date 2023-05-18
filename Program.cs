@@ -11,7 +11,7 @@ namespace Hephaestus_Project
             {
                 options.Cookie.Name = "MyCookieAuth";
                 options.LoginPath= "/Account/Login";
-                options.AccessDeniedPath= "/Account/AccessDenied";
+                options.AccessDeniedPath= "/AccessDenied";
             });
             builder.Services.AddAuthorization(options =>
             {
