@@ -1,5 +1,5 @@
 ﻿@page
-@model Hephaestus_Project.Pages.MyEQ.MyEQModel
+@model Hephaestus_Project.Pages.MyEQ.Pages_MyEQ_Index
 @{
 }
 
@@ -11,37 +11,21 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>SURNAME</th>
-            <th>DIVISION</th>
-            <th>RANK</th>
-            <th>ACCOUNT</th>
+            <th>Weapon</th>
+            <th>Serial</th>
+            <th>Type</th>
+            <th>InMaintance</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.MyEQ)
+        @foreach (var item in Model.ListMyEQ)
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Surname</td>
-                <td>@item.Division</td>
-                <td>@item.Rank</td>
-                <td>
-                    @if (item.IsRegistered != 0)
-                    {
-                        <a class="btn btn-info btn-sm" href="/Account/Index?id=@item.IsRegistered">Show Account</a>
-
-                    }
-                    else
-                    {
-                        <a class="btn btn-primary btn-sm" href="/Account/Create?id=@item.Id">Create Account</a>
-                    }
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="/Users/Edit?id=@item.Id">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/Users/Delete?id=@item.Id">Delete</a>
-                </td>
+                <td>@item.Weapon</td>
+                <td>@item.Serial</td>
+                <td>@item.Type</td>
+                <td>@item.InMaintance</td>
             </tr>
         }
     </tbody>

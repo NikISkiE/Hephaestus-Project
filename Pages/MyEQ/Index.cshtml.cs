@@ -15,7 +15,7 @@ namespace Hephaestus_Project.Pages.Users
         {
             Configuration = configuration;
         }
-        public List<UserInfo> ListUsers = new List<UserInfo>();
+        public List<MyEQinfo> ListMyEQ = new List<MyEQinfo>();
 
         public void OnGet()
         {
@@ -26,35 +26,21 @@ namespace Hephaestus_Project.Pages.Users
                 using (SqlConnection con = new SqlConnection(constring))
                 {
                     con.Open();
-                    string sql = "SELECT * FROM UserData";
+                    string sql = "SELECT stock.ID,Equipment.Name,Stock.Serial,Equipment.Type,Stock,InMaintance FROM Stock,Equipment,UserData,AccountData WHERE stock.EquipmentID=Equipment.ID AND stock.UserIDL=UserData.ID AND UserData.ID=AccountData.UserID AND AccountData.login=";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                UserInfo claims = new UserInfo();
+                                MyEQinfo claims = new MyEQinfo();
                                 claims.Id = "" + reader.GetInt32(0);
                                 claims.Name = reader.GetString(1);
-                                claims.Surname = reader.GetString(2);
-                                claims.Division = reader.GetString(3);
-                                claims.Rank = reader.GetString(4);
+                                claims.Serial = reader.GetString(2);
+                                claims.Type = reader.GetString(3);
+                                claims.InMaintance = reader.GetBool(4);
 
-                                ListUsers.Add(claims);
-                            }
-                        }
-                    }
-                    foreach (UserInfo claims in ListUsers)
-                    {
-                        sql = $"SELECT id FROM AccountData WHERE userid={claims.Id}";
-                        using (SqlCommand cmd = new SqlCommand(sql, con))
-                        {
-                            using (SqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    claims.IsRegistered = (reader.GetInt32(0) == null) ? 0 : reader.GetInt32(0);
-                                }
+                                ListMyEQ.Add(claims);
                             }
                         }
                     }
