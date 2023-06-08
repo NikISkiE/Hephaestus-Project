@@ -46,5 +46,4 @@ namespace Hephaestus_Project
             app.Run();
         }
     }
-    Siema
 }
