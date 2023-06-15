@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Hephaestus_Project.Models;
+using System.Runtime.InteropServices;
+using Hephaestus_Project.Pages.Login;
 
-namespace Hephaestus_Project.Pages.Users
+namespace Hephaestus_Project.Pages.MyEQ
 {
-    [Authorize(Policy = "MustBeAtleastCom")]
+    [Authorize]
     public class MyEQModel : PageModel
     {
         private readonly IConfiguration Configuration;
@@ -19,14 +21,16 @@ namespace Hephaestus_Project.Pages.Users
 
         public void OnGet()
         {
+            string cookie=User.Identity.Name;
             try
             {
+     
                 var constring = Configuration["ConnectionStrings:DefaultString"];
 
                 using (SqlConnection con = new SqlConnection(constring))
                 {
                     con.Open();
-                    string sql = "SELECT stock.ID,Equipment.Name,Stock.Serial,Equipment.Type,Stock,InMaintance FROM Stock,Equipment,UserData,AccountData WHERE stock.EquipmentID=Equipment.ID AND stock.UserIDL=UserData.ID AND UserData.ID=AccountData.UserID AND AccountData.login=";
+                    string sql = $"SELECT Equipment.Name,Stock.Serial,Equipment.Type FROM Stock,Equipment,UserData,AccountData WHERE stock.EquipmentID=Equipment.ID AND stock.UserIDL=UserData.ID AND UserData.ID=AccountData.UserID AND AccountData.Login='{cookie}'";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -34,11 +38,10 @@ namespace Hephaestus_Project.Pages.Users
                             while (reader.Read())
                             {
                                 MyEQinfo claims = new MyEQinfo();
-                                claims.Id = "" + reader.GetInt32(0);
-                                claims.Name = reader.GetString(1);
-                                claims.Serial = reader.GetString(2);
-                                claims.Type = reader.GetString(3);
-                                claims.InMaintance = reader.GetBool(4);
+                                claims.Name = reader.GetString(0);
+                                claims.Serial = reader.GetString(1);
+                                claims.Type = reader.GetString(2);
+                                //claims.InMaintance = reader.GetBool(4);
 
                                 ListMyEQ.Add(claims);
                             }
