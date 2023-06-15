@@ -6,12 +6,11 @@ namespace Hephaestus_Project.Models
     {
         public string Id { get; set; }
         [Required]
-        public string Login { get; set; }
+        public string  Name{ get; set; }
         [Required]
-        public string Password { get; set; }
+        public string Surname { get; set; }
         [Required]
-        public string PermLVL { get; set; }
-        public string Created_At { get; set; }
-        public string UserID { get; set; } = "NULL";
+        public string Division { get; set; }
+        public string Rank { get; set; }
     }
 }
