@@ -46,7 +46,12 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" asp-for="input.PermLVL"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.PermLVL" value="" />
+            <select class="form-control" asp-for="input.PermLVL">
+                <option value="1">User</option>
+                <option value="2">Commander</option>
+                <option value="3">Quatermaster</option>
+                <option value="4">Admin</option>
+            </select>
             <span class="text-danger" asp-validation-for="input.PermLVL"></span>
         </div>
     </div>

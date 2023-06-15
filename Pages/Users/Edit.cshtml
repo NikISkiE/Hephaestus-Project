@@ -46,14 +46,37 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" asp-for="input.Division"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.Division" value="@Model.input.Division" />
+            <select class="form-control" asp-for="input.Division">
+                <option value="None" selected disabled hidden>@Model.input.Division</option>
+                <option value="Infantry">Infantry</option>
+                <option value="Cavalry">Cavalry</option>
+                <option value="Armored">Armored</option>
+                <option value="Mountain">Mountain</option>
+                <option value="Airborne">Airborne</option>
+                <option value="Artillery">Artillery</option>
+                <option value="Security">Security</option>
+            </select>
             <span class="text-danger" asp-validation-for="input.Division"></span>
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" asp-for="input.Rank"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.Rank" value="@Model.input.Rank" />
+            <select class="form-control" asp-for="input.Rank">
+                <option value="None" selected disabled hidden>@Model.input.Rank</option>
+                <option value="Private">Private</option>
+                <option value="Private First Class">Private First Class</option>
+                <option value="Specialist">Specialist</option>
+                <option value="Corporal">Corporal</option>
+                <option value="Sergeant">Sergeant</option>
+                <option value="Staff Sergeant">Staff Sergeant</option>
+                <option value="Sergeant First Class">Sergeant First Class</option>
+                <option value="Master Sergeant">Master Sergeant</option>
+                <option value="First Sergeant">First Sergeant</option>
+                <option value="Sergeant Major">Sergeant Major</option>
+                <option value="Command Sergeant Major">Command Sergeant Major</option>
+                <option value="Sergeant Major of the Army">Sergeant Major of the Army</option>
+            </select>
             <span class="text-danger" asp-validation-for="input.Rank"></span>
         </div>
     </div>
