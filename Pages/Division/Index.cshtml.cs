@@ -25,7 +25,15 @@ namespace Hephaestus_Project.Pages.Division
                 using (SqlConnection con = new SqlConnection(constring))
                 {
                     con.Open();
-                    string sql = "SELECT Name, Surname, Division, Rank FROM UserData";
+                    string sql;
+                    if (User.FindFirst("PermLVL")?.Value == "3")
+                    {
+                         sql = $"SELECT UserData.Name, UserData.Surname, UserData.Division, UserData.Rank FROM UserData WHERE UserData.Division IN (SELECT UserData.Division FROM UserData, AccountData WHERE AccountData.userid = UserData.id AND AccountData.login = '{User.Identity.Name}') ";
+                    }
+                    else
+                    {
+                         sql = "SELECT UserData.Name, UserData.Surname, UserData.Division, UserData.Rank FROM UserData ";
+                    }
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
