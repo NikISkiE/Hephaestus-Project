@@ -5,7 +5,7 @@ BEGIN
     DECLARE @WeaponCount int;
     SELECT @WeaponCount = COUNT(@eqid)
     FROM Stock
-    WHERE EquipmentID = @eqid; 
+    WHERE EquipmentID = @eqid and InMaintance = 0 and UserIDL IS NULL
     RETURN @WeaponCount;
 END;
 GO
