@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Hephaestus_Project.Models;
+using System.Data;
 
 namespace Hephaestus_Project.Pages.Division
 {
@@ -26,13 +27,13 @@ namespace Hephaestus_Project.Pages.Division
                 {
                     con.Open();
                     string sql;
-                    if (User.FindFirst("PermLVL")?.Value == "3")
+                    if (User.FindFirst("PermLVL")?.Value == "2")
                     {
-                         sql = $"SELECT UserData.Name, UserData.Surname, UserData.Division, UserData.Rank FROM UserData WHERE UserData.Division IN (SELECT UserData.Division FROM UserData, AccountData WHERE AccountData.userid = UserData.id AND AccountData.login = '{User.Identity.Name}') ";
+                         sql = $"SELECT UserData.id, UserData.Name, UserData.Surname, UserData.Division, UserData.Rank FROM UserData WHERE UserData.Division IN (SELECT UserData.Division FROM UserData, AccountData WHERE AccountData.userid = UserData.id AND AccountData.login = '{User.Identity.Name}') ";
                     }
                     else
                     {
-                         sql = "SELECT UserData.Name, UserData.Surname, UserData.Division, UserData.Rank FROM UserData ";
+                         sql = "SELECT UserData.id, UserData.Name, UserData.Surname, UserData.Division, UserData.Rank FROM UserData ";
                     }
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -41,10 +42,11 @@ namespace Hephaestus_Project.Pages.Division
                             while (reader.Read())
                             {
                                 DivisionInfo claims = new DivisionInfo();
-                                claims.Name = reader.GetString(0);
-                                claims.Surname = reader.GetString(1);
-                                claims.Division = reader.GetString(2);
-                                claims.Rank = reader.GetString(3);
+                                claims.Id = reader.GetInt32(0).ToString();
+                                claims.Name = reader.GetString(1);
+                                claims.Surname = reader.GetString(2);
+                                claims.Division = reader.GetString(3);
+                                claims.Rank = reader.GetString(4);
                                 ListDivision.Add(claims);
                             }
                         }
