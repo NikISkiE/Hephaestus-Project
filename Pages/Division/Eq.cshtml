@@ -1,0 +1,28 @@
+﻿@page
+@model Hephaestus_Project.Pages.Division.MyEQModel
+
+<div class="text-center">
+    <h1 class="display-4">Equipment</h1>
+</div>
+<a class="btn btn-primary btn-sm" href="/Division/Index">Back</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Serial</th>
+            <th>Type</th>
+            <th>InMaintance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListMyEQ)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Serial</td>
+                <td>@item.Type</td>
+                <td>@item.InMaintance</td>
+            </tr>
+        }
+    </tbody>
+</table>
