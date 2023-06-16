@@ -1,0 +1,33 @@
+﻿@page
+@model Hephaestus_Project.Pages.Arsenal.ArsenalModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Arsenal</h1>
+</div>
+<a class="btn btn-primary btn-sm" href="/Arsenal/Create">New Gun</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Stocked</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListArsenal)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Type</td>
+                <td>@item.Stocked</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Arsenal/Edit?id=@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Arsenal/Delete?id=@item.Id">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/Arsenal/Stock/Index?id=@item.Id">Show stock</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
