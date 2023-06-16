@@ -30,7 +30,7 @@ namespace Hephaestus_Project.Pages.MyEQ
                 using (SqlConnection con = new SqlConnection(constring))
                 {
                     con.Open();
-                    string sql = $"SELECT Equipment.Name,Stock.Serial,Equipment.Type FROM Stock,Equipment,UserData,AccountData WHERE stock.EquipmentID=Equipment.ID AND stock.UserIDL=UserData.ID AND UserData.ID=AccountData.UserID AND AccountData.Login='{cookie}'";
+                    string sql = $"SELECT Equipment.Name,Stock.Serial,Equipment.Type,Stock.InMaintance FROM Stock,Equipment,UserData,AccountData WHERE stock.EquipmentID=Equipment.ID AND stock.UserIDL=UserData.ID AND UserData.ID=AccountData.UserID AND AccountData.Login='{cookie}'";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -41,7 +41,7 @@ namespace Hephaestus_Project.Pages.MyEQ
                                 claims.Name = reader.GetString(0);
                                 claims.Serial = reader.GetString(1);
                                 claims.Type = reader.GetString(2);
-                                //claims.InMaintance = reader.GetBool(4);
+                                claims.InMaintance = reader.GetBoolean(3);
 
                                 ListMyEQ.Add(claims);
                             }

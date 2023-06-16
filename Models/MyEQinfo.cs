@@ -9,6 +9,8 @@ namespace Hephaestus_Project.Models
         public string Name { get; set; }
         [Required]
         public string Type { get; set; }
+        [Required]
+        public bool InMaintance { get; set; }
 
     }
 }
