@@ -9,7 +9,7 @@
             <th>Name</th>
             <th>Serial</th>
             <th>Type</th>
-            <th>InMaintance</th>
+            <th>In Maintance</th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +19,20 @@
                 <td>@item.Name</td>
                 <td>@item.Serial</td>
                 <td>@item.Type</td>
-                <td>@item.InMaintance</td>
+                <td>
+                    @if(item.InMaintance)
+                    {
+                        <text>
+                            Yes
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            No
+                        </text>  
+                    }
+                </td>
             </tr>
         }
     </tbody>
