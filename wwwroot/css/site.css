@@ -14,8 +14,8 @@ html {
 }
 
 header {
-    background-color: lightgrey;
-    color:black;
+    background-color: rgb(38,3,3);
+    color: white;
 }
 
 body {
@@ -29,7 +29,25 @@ body {
     color:white;
 }
 
-#login {
+#login_button {
     background-color: black;
     color: white;
+    height: 52px;
+    width: 300px;
+    font-size: 38px;
+    margin: 10px;
+}
+
+#login_body{
+    margin-top: 150px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.credential{
+    height: 52px;
+    width: 300px;
+    font-size:38px;
+    text-align: center;
+    margin: 10px;
 }
