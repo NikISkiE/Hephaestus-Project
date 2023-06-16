@@ -56,7 +56,7 @@ namespace Hephaestus_Project.Pages.Login
                     }
                     con.Close();
                 }
-            }catch(Exception ex)
+            }catch
             {
                 return RedirectToPage("/Error");
             }

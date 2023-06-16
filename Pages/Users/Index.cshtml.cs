@@ -53,7 +53,7 @@ namespace Hephaestus_Project.Pages.Users
                             {
                                 if(reader.Read())
                                 {
-                                    claims.IsRegistered = (reader.GetInt32(0) == null) ? 0:reader.GetInt32(0);
+                                    claims.IsRegistered = (reader.IsDBNull(0))?0:reader.GetInt32(0);
                                 }
                             }
                         }

@@ -54,11 +54,9 @@ namespace Hephaestus_Project.Pages.Account
 
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                RedirectToPage("/Error");
             }
 
 

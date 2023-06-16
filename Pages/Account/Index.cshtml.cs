@@ -2,7 +2,6 @@ using Hephaestus_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
-using Hephaestus_Project.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Hephaestus_Project.Pages.Account
@@ -49,9 +48,9 @@ namespace Hephaestus_Project.Pages.Account
                     connection.Close();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine(ex.ToString());
+                RedirectToPage("/Error");
             }
         }
     }
