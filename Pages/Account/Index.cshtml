@@ -9,19 +9,39 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>LOGIN</th>
             <th>PASSWORD</th>
-            <th>PERMLVL</th>
+            <th>PERMISSION</th>
             <th>CREATED_AT</th>
         </tr>
     </thead>
     <tbody>
             <tr>
-                <td>@Model.input.Id</td>
                 <td>@Model.input.Login</td>
                 <td>@Model.input.Password</td>
-                <td>@Model.input.PermLVL</td>
+                <td>@switch(Model.input.PermLVL){
+                    case "1":
+                        <text>
+                            User
+                        </text>
+                    break;
+                    case "2":
+                        <text>
+                           Commander 
+                        </text>
+                    break;
+                    case "3":
+                        <text>
+                            Quartermaster
+                        </text>
+                    break;
+                    case "4":
+                        <text>
+                            Admin
+                        </text>
+                    break;
+
+                }</td>
                 <td>@Model.input.Created_At</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/Account/Edit?id=@Model.input.Id">Edit</a>

@@ -51,11 +51,9 @@ namespace Hephaestus_Project.Pages.Users
                     connection.Close();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                RedirectToPage("/Error");
             }
         }
 
@@ -84,11 +82,9 @@ namespace Hephaestus_Project.Pages.Users
                     connection.Close();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                RedirectToPage("/Error");
             }
 
             Response.Redirect("/Users/Index");

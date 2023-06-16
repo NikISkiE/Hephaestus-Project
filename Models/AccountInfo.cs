@@ -1,4 +1,5 @@
 ﻿using Microsoft.Build.Framework;
+using System.ComponentModel;
 
 namespace Hephaestus_Project.Models
 {
@@ -10,6 +11,7 @@ namespace Hephaestus_Project.Models
         [Required]
         public string Password { get; set; }
         [Required]
+        [DisplayName("Permission")]
         public string PermLVL { get; set; }
         public string Created_At { get; set; }
         public string UserID { get; set; } = "NULL";

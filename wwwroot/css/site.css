@@ -13,6 +13,41 @@ html {
   min-height: 100%;
 }
 
+header {
+    background-color: rgb(38,3,3);
+    color: white;
+}
+
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: grey;
+    color:black;
+}
+
+#logout{
+    background-color: black;
+    color:white;
+}
+
+#login_button {
+    background-color: black;
+    color: white;
+    height: 52px;
+    width: 300px;
+    font-size: 38px;
+    margin: 10px;
+}
+
+#login_body{
+    margin-top: 150px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.credential{
+    height: 52px;
+    width: 300px;
+    font-size:38px;
+    text-align: center;
+    margin: 10px;
 }

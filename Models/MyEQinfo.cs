@@ -13,3 +13,4 @@ namespace Hephaestus_Project.Models
         public bool InMaintance { get; set; }
     }
 }
+
