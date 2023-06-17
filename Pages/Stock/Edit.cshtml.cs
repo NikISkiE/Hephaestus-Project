@@ -4,6 +4,7 @@ using Hephaestus_Project.Models;
 using Microsoft.Data.SqlClient;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Drawing;
 
 namespace Hephaestus_Project.Pages.Stock
 {
@@ -12,6 +13,7 @@ namespace Hephaestus_Project.Pages.Stock
     {
         [BindProperty]
         public StockInfo input { get; set; }
+        public List<UserInfo> users = new List<UserInfo>();
         public bool success = false;
         public string error = "NULL";
         private readonly IConfiguration Configuration;
@@ -49,6 +51,18 @@ namespace Hephaestus_Project.Pages.Stock
                             }
                         }
                     }
+                    sql = $"SELECT ID,Name FROM UserData";
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                UserInfo claims = new UserInfo();
+                                claims.Id = "" + reader.GetInt32(0);
+                                claims.Name = reader.GetString(1);
+                            users.Add(claims);
+                            }
+                        }
                     connection.Close();
                 }
             }
@@ -75,7 +89,7 @@ namespace Hephaestus_Project.Pages.Stock
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = $"UPDATE Stock SET Serial='{input.Serial}', UserIDL='{input.UserIDL}', InMaintance='{input.InMaintance}' WHERE ID='{input.Id}'";
+                    String sql = $"UPDATE Stock SET Serial='{input.Serial}', UserIDL={input.UserIDL}, InMaintance={input.InMaintance} WHERE ID={input.Id}";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();

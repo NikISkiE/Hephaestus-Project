@@ -22,7 +22,7 @@
             <tr>
                 <td>@item.Serial</td>
                 <td>
-                    @{string isregister = (item.UserIDL == "None")?"Yes":"No";}
+                    @{string isregister = (item.UserIDL == "None")?"No":"Yes";}
                     @isregister
                 </td>
                 <td>@{string maintance = (item.InMaintance=="True")?"Yes":"No";} @maintance</td>

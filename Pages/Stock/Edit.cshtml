@@ -40,7 +40,26 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" asp-for="input.UserIDL"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.UserIDL" value="@Model.input.UserIDL" />
+            <select class="form-control" asp-for="input.UserIDL">
+                <option value="None" hidden selected disabled>
+                    @foreach (var user in Model.users)
+                    {
+                        if(user.Id == Model.input.UserIDL)
+                        {
+                            <text>@user.Id. @user.Name</text>
+                        }
+                        else
+                        {
+                            <text></text>
+                        }
+                    }
+                </option>
+                <option value="NULL">None</option>
+                @foreach (var user in Model.users)
+                {
+                    <option value="@user.Id">@user.Id. @user.Name</option>
+                }
+            </select>
             <span class="text-danger" asp-validation-for="input.UserIDL"></span>
         </div>
     </div>
