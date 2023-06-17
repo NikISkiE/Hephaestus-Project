@@ -22,9 +22,9 @@
             connection.Close();
         }
     }
-    catch
+    catch(Exception ex)
     {
-        RedirectToPage("/Error");
+        BadRequest(ex);
     }
 
     Response.Redirect("/Users/Index");

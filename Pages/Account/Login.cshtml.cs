@@ -56,9 +56,9 @@ namespace Hephaestus_Project.Pages.Login
                     }
                     con.Close();
                 }
-            }catch
+            }catch(Exception ex)
             {
-                return RedirectToPage("/Error");
+                BadRequest(ex);
             }
             
             // Verify Credential

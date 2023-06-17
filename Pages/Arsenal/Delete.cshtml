@@ -23,7 +23,8 @@
         }
     }
     catch (Exception ex)
-    {       
+    {
+        BadRequest(ex);
     }
 
     Response.Redirect("/Arsenal/Index");
