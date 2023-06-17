@@ -11,10 +11,11 @@ namespace Hephaestus_Project.Pages.Stock
     public class EditModel : PageModel
     {
         [BindProperty]
-        public ArsenalInfo input { get; set; }
+        public StockInfo input { get; set; }
         public bool success = false;
         public string error = "NULL";
         private readonly IConfiguration Configuration;
+        public string EQID;
 
         public EditModel(IConfiguration configuration)
         {
@@ -23,7 +24,8 @@ namespace Hephaestus_Project.Pages.Stock
 
         public void OnGet()
         {
-            input = new ArsenalInfo();
+            EQID = Request.Query["eqid"];
+            input = new StockInfo();
             String id = Request.Query["id"];
             //DB connection
             try
@@ -32,7 +34,7 @@ namespace Hephaestus_Project.Pages.Stock
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM Equipment WHERE id=@id";
+                    String sql = $"SELECT ID, Serial, UserIDL, InMaintance FROM Stock WHERE ID=@id";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("id", id);
@@ -40,9 +42,10 @@ namespace Hephaestus_Project.Pages.Stock
                         {
                             if(reader.Read())
                             {
-                                input.Id = reader.GetInt32(0).ToString();
-                                input.Name = reader.GetString(1);
-                                input.Type = reader.GetString(2);
+                                input.Id = "" + reader.GetInt32(0);
+                                input.Serial = reader.GetString(1);
+                                input.UserIDL = (reader.IsDBNull(2)) ? "None" : reader.GetInt32(2).ToString();
+                                input.InMaintance = "" + reader.GetBoolean(3);
                             }
                         }
                     }
@@ -60,7 +63,7 @@ namespace Hephaestus_Project.Pages.Stock
         public void OnPost()
         {
             //no empty field
-            if (input.Name == null || input.Type == null)
+            if (input.Serial == null)
             {
                 error = "Fill All Empty Spaces";
                 return;
@@ -72,7 +75,7 @@ namespace Hephaestus_Project.Pages.Stock
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = $"UPDATE Equipment SET Name='{input.Name}', Type='{input.Type}' WHERE ID='{input.Id}'";
+                    String sql = $"UPDATE Stock SET Serial='{input.Serial}', UserIDL='{input.UserIDL}', InMaintance='{input.InMaintance}' WHERE ID='{input.Id}'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();
@@ -87,7 +90,7 @@ namespace Hephaestus_Project.Pages.Stock
                 return;
             }
 
-            Response.Redirect("/Stock/Index");
+            Response.Redirect($"/Stock/Index?id={input.EquipmentID}");
         
         }
 

@@ -27,7 +27,7 @@
                 </td>
                 <td>@{string maintance = (item.InMaintance=="True")?"Yes":"No";} @maintance</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Stock/Edit?id=@item.ID">Edit</a>
+                    <a class="btn btn-primary btn-sm" href="/Stock/Edit?id=@item.ID&eqid=@Model.ID">Edit</a>
                     <a class="btn btn-danger btn-sm" href="/Stock/Delete?id=@item.ID&eqid=@Model.ID">Delete</a>
                 </td>
             </tr>

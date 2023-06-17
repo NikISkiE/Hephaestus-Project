@@ -4,14 +4,14 @@
 }
 
 <div class="text-center">
-    <h1>Edit Arsenal</h1>
+    <h1>Edit Stock</h1>
 </div>
 @if (Model.success)
 {
     <div class="row mb-3">
         <div class="col-sm-9">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Arsenal Edited Successfully</strong>
+                <strong>Stock Edited Successfully</strong>
             </div>
         </div>
     </div>
@@ -28,19 +28,32 @@
 }
 <form method="post">
     <input type="hidden" asp-for="input.Id" value="@Model.input.Id">
+    <input type="hidden" asp-for="input.EquipmentID" value="@Model.EQID">
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" asp-for="input.Name"></label>
+        <label class="col-sm-3 col-form-label" asp-for="input.Serial"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.Name" value="@Model.input.Name" />
-            <span class="text-danger" asp-validation-for="input.Name"></span>
+            <input type="text" class="form-control" asp-for="input.Serial" value="@Model.input.Serial" />
+            <span class="text-danger" asp-validation-for="input.Serial"></span>
         </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" asp-for="input.Type"></label>
+        <label class="col-sm-3 col-form-label" asp-for="input.UserIDL"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.Type" value="@Model.input.Type" />
-            <span class="text-danger" asp-validation-for="input.Type"></span>
+            <input type="text" class="form-control" asp-for="input.UserIDL" value="@Model.input.UserIDL" />
+            <span class="text-danger" asp-validation-for="input.UserIDL"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.InMaintance"></label>
+        <div class="col-sm-6">
+            @*<input type="text" class="form-control" asp-for="input.InMaintance" value="@Model.input.UserIDL" />*@
+            
+            <select class="form-control" asp-for="input.InMaintance">
+                <option value="0">NO</option>
+                <option value="1">YES</option>
+                <span class="text-danger" asp-validation-for="input.InMaintance"></span>
+            </select>
         </div>
     </div>
 
@@ -49,7 +62,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         <div class="col-sm-3 d-grid">
-            <a class="btn btn-outline-primary" href="/Stock/Index" role="button">Cancel</a>
+            <a class="btn btn-outline-primary" href="/Stock/Index?id=@Model.EQID" role="button">Cancel</a>
         </div>
     </div>
 </form>
