@@ -1,10 +1,12 @@
 using Hephaestus_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
 namespace Hephaestus_Project.Pages.Stock
 {
+    [Authorize(Policy = "MustBeAtleastQuater")]
     public class CreateModel : PageModel
     {
         public string error = "NULL";
@@ -53,9 +55,7 @@ namespace Hephaestus_Project.Pages.Stock
             }
             catch (Exception ex)
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                BadRequest(ex); ;
             }
 
 

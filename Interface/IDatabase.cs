@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Hephaestus_Project.Models;
+using System.ComponentModel;
 
 namespace Hephaestus_Project.Interface
 {
@@ -40,5 +41,21 @@ namespace Hephaestus_Project.Interface
             public string Type { get; set; }
             public bool InMaintance { get; set; }
         }
+        public interface ArsenalInfo
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
+            public string Type { get; set; }
+            public string Stocked { get; set; }
+        }
+        public interface StockInfo
+        {
+            public string Serial { get; set; }
+            public string UserIDL { get; set; }
+            public string EquipmentID { get; set; }
+            public string InMaintance { get; set; }
+            public string ID { get; set; }
+        }
+
     }
 }

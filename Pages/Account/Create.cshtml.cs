@@ -55,9 +55,9 @@ namespace Hephaestus_Project.Pages.Account
 
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                RedirectToPage("/Error");
+                BadRequest(ex);
             }
 
 

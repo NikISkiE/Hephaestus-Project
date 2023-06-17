@@ -62,7 +62,7 @@ namespace Hephaestus_Project.Pages.Users
                 }
             }catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                BadRequest(ex);
             }
         }
     }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Hephaestus_Project.Pages.Arsenal
 {
-    [Authorize(Policy = "MustBeAtleastCom")]
+    [Authorize(Policy = "MustBeAtleastQuater")]
     public class EditModel : PageModel
     {
         [BindProperty]
@@ -51,9 +51,7 @@ namespace Hephaestus_Project.Pages.Arsenal
             }
             catch (Exception ex)
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                BadRequest(ex);
             }
         }
 

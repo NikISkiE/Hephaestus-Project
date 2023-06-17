@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Hephaestus_Project.Pages.Stock
 {
-    [Authorize(Policy = "MustBeAtleastCom")]
+    [Authorize(Policy = "MustBeAtleastQuater")]
     public class EditModel : PageModel
     {
         [BindProperty]
@@ -68,9 +68,7 @@ namespace Hephaestus_Project.Pages.Stock
             }
             catch (Exception ex)
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                BadRequest(ex);
             }
         }
 
@@ -99,9 +97,7 @@ namespace Hephaestus_Project.Pages.Stock
             }
             catch (Exception ex)
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                BadRequest(ex);
             }
 
             Response.Redirect($"/Stock/Index?id={input.EquipmentID}");

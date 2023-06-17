@@ -48,9 +48,9 @@ namespace Hephaestus_Project.Pages.Account
                     connection.Close();
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                RedirectToPage("/Error");
+                BadRequest(ex);
             }
         }
     }

@@ -1,8 +1,9 @@
-﻿using Microsoft.Build.Framework;
+﻿using Hephaestus_Project.Interface;
+using Microsoft.Build.Framework;
 
 namespace Hephaestus_Project.Models
 {
-    public class StockInfo : UserInfo
+    public class StockInfo : UserInfo, IDatabase.StockInfo
     {
         [Required]
         public string Serial { get; set; }
