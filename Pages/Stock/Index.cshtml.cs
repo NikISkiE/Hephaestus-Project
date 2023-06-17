@@ -19,7 +19,6 @@ namespace Hephaestus_Project.Pages.Stock
             Configuration = configuration;
         }
         public List<StockInfo> ListStock = new List<StockInfo>();
-        public List<UserInfo> ListUser = new List<UserInfo>();
 
 
 
