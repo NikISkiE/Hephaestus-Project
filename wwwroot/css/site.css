@@ -28,6 +28,10 @@ body {
     background-color: black;
     color:white;
 }
+#logout:hover {
+    background-color: #0b5ed7;
+    color: white;
+}
 
 #login_button {
     background-color: black;
@@ -36,6 +40,10 @@ body {
     width: 300px;
     font-size: 38px;
     margin: 10px;
+}
+
+#login_button:hover {
+    background-color: #0b5ed7;
 }
 
 #login_body{
@@ -50,4 +58,29 @@ body {
     font-size:38px;
     text-align: center;
     margin: 10px;
+}
+
+.button_css {
+    background-color: black;
+    border-color: rgb(38,3,3);
+}
+
+.button_css_dif {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+tr{
+    font-size: 20px;
+    color: black;
+}
+
+div{
+    color: black;
+    font-size:20px;
+}
+
+welcome{
+    color: white;
 }
