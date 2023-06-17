@@ -4,14 +4,14 @@
 }
 
 <div class="text-center">
-    <h1>New Arsenal</h1>
+    <h1>New User</h1>
 </div>
 @if (Model.success)
 {
     <div class="row mb-3">
         <div class="col-sm-9">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>New Arsenal Added Successfully</strong>
+                <strong>New User Added Successfully</strong>
             </div>
         </div>
     </div>
@@ -27,19 +27,25 @@
     </div>
 }
 <form method="post">
+    <input type="hidden" asp-for="input.EquipmentID" value="@Model.EQID">
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" asp-for="input.Name"></label>
+        <label class="col-sm-3 col-form-label" asp-for="input.Serial"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.Name" value="" />
-            <span class="text-danger" asp-validation-for="input.Name"></span>
+            <input type="text" class="form-control" asp-for="input.Serial" value="" />
+            <span class="text-danger" asp-validation-for="input.Serial"></span>
         </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label" asp-for="input.Type"></label>
+        <label class="col-sm-3 col-form-label" asp-for="input.UserIDL"></label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" asp-for="input.Type" value="" />
-            <span class="text-danger" asp-validation-for="input.Type"></span>
+            <input type="text" class="form-control" asp-for="input.UserIDL" value="" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.InMaintance"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.InMaintance" value="" />
         </div>
     </div>
 
@@ -48,7 +54,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         <div class="col-sm-3 d-grid">
-            <a class="btn btn-outline-primary" href="/Arsenal/Stock/Index" role="button">Cancel</a>
+            <a class="btn btn-outline-primary" href="/Stock/Index?id=@Model.EQID" role="button">Cancel</a>
         </div>
     </div>
 </form>

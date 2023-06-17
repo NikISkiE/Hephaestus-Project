@@ -3,10 +3,9 @@
 @using Microsoft.Extensions.Configuration;
 @inject IConfiguration Configuration
 @{
-
     try
     {
-        String id = Request.Query["id"];
+        String id = Request.Query["ID"];        
         var constring = Configuration.GetSection("ConnectionStrings")["DefaultString"];
 
         using (SqlConnection connection = new SqlConnection(constring))
@@ -26,6 +25,6 @@
     {       
     }
 
-    Response.Redirect("/Stock/Index");
+    Response.Redirect($"/Stock/Index?id={Request.Query["eqid"]}");
 }
 

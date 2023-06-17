@@ -6,7 +6,8 @@
 <div class="text-center">
     <h1 class="display-4">Stock</h1>
 </div>
-<a class="btn btn-primary btn-sm" href="/Arsenal/Stock/Create">Stock</a>
+<a class="btn btn-primary btn-sm" href="/Stock/Create?id=@Model.ID">Create</a>
+<a class="btn btn-primary btn-sm" href="/Arsenal/Index">Back</a>
 <table class="table">
     <thead>
         <tr>
@@ -20,11 +21,11 @@
         {
             <tr>
                 <td>@item.Serial</td>
-                <td>@item.UserIDL</td>
+                <td>@item.UserIDL @item.Name </td>
                 <td>@item.InMaintance</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Arsenal/Stock/Edit?id=@item.ID">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/Arsenal/Stock/Delete?id=@item.ID">Delete</a>
+                    <a class="btn btn-primary btn-sm" href="/Stock/Edit?id=@item.ID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Stock/Delete?id=@item.ID&eqid=@Model.ID">Delete</a>
                 </td>
             </tr>
         }
