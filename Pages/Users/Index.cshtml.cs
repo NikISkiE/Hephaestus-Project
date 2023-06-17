@@ -7,17 +7,17 @@ using Hephaestus_Project.Models;
 namespace Hephaestus_Project.Pages.Users
 {
     [Authorize(Policy = "MustBeAtleastCom")]
-    internal class UsersModel : PageModel
+    public class UsersModel : PageModel
     {
         private readonly IConfiguration Configuration;
 
-        private UsersModel(IConfiguration configuration)
+        public UsersModel(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        internal List<UserInfo> ListUsers = new List<UserInfo>();
+        public List<UserInfo> ListUsers = new List<UserInfo>();
 
-        internal void OnGet()
+        public void OnGet()
         {
             try
             {

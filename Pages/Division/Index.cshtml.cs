@@ -4,11 +4,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Hephaestus_Project.Models;
 using System.Data;
+using Hephaestus_Project.Interface;
 
 namespace Hephaestus_Project.Pages.Division
 {
     [Authorize(Policy = "MustBeAtleastCom")]
-    public class DivisionModel : PageModel
+    public class DivisionModel : PageModel 
     {
         private readonly IConfiguration Configuration;
         public DivisionModel(IConfiguration configuration)
@@ -21,6 +22,7 @@ namespace Hephaestus_Project.Pages.Division
         {
             try
             {
+                
                 var constring = Configuration["ConnectionStrings:DefaultString"];
 
                 using (SqlConnection con = new SqlConnection(constring))

@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
+using Hephaestus_Project.Interface;
 
 namespace Hephaestus_Project.Pages.Account
 {

@@ -15,6 +15,7 @@ namespace Hephaestus_Project.Models
         [DisplayName("Permission")]
         public string PermLVL { get; set; }
         public string Created_At { get; set; }
-        public string UserID { get; set; } = "NULL";
+        public string UserID { get; set; }
     }
+
 }
