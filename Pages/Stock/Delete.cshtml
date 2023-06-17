@@ -23,7 +23,7 @@
     }
     catch (Exception ex)
     {
-        Response.Redirect("/Error");
+        BadRequest(ex);
     }
 
     Response.Redirect($"/Stock/Index?id={Request.Query["eqid"]}");

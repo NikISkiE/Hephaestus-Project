@@ -70,7 +70,7 @@ namespace Hephaestus_Project.Pages.Stock
 
             }catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                BadRequest(ex);
             }
         }
     }

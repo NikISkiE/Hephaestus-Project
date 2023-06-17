@@ -53,9 +53,7 @@ namespace Hephaestus_Project.Pages.Stock
             }
             catch (Exception ex)
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                BadRequest(ex); ;
             }
 
 

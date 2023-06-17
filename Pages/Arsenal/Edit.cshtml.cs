@@ -51,9 +51,7 @@ namespace Hephaestus_Project.Pages.Arsenal
             }
             catch (Exception ex)
             {
-                //error
-                error = "Something Went Wrong";
-                return;
+                BadRequest(ex);
             }
         }
 

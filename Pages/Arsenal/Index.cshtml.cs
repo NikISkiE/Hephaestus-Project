@@ -46,7 +46,7 @@ namespace Hephaestus_Project.Pages.Arsenal
                 }
             }catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                BadRequest(ex);
             }
         }
     }
