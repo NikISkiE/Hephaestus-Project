@@ -6,7 +6,7 @@
 <div class="text-center">
     <h1 class="display-4">Users</h1>
 </div>
-<a class="btn btn-primary btn-sm" href="/Users/Create">New User</a>
+<a class="btn btn-primary btn-sm button_css" href="/Users/Create">New User</a>
 <table class="table">
     <thead>
         <tr>
@@ -27,17 +27,17 @@
                 <td>@item.Rank</td>
                 <td>@if (item.IsRegistered != 0)
                     {
-                        <a class="btn btn-info btn-sm" href="/Account/Index?id=@item.IsRegistered">Show Account</a>
+                        <a class="btn btn-info btn-sm text-white button_css" href="/Account/Index?id=@item.IsRegistered">Show Account</a>
 
                     }
                     else
                     {
-                        <a class="btn btn-primary btn-sm" href="/Account/Create?id=@item.Id">Create Account</a>
+                        <a class="btn btn-primary btn-sm button_css" href="/Account/Create?id=@item.Id">Create Account</a>
                     }
                     </td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Users/Edit?id=@item.Id">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/Users/Delete?id=@item.Id">Delete</a>
+                    <a class="btn btn-primary btn-sm button_css" href="/Users/Edit?id=@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm button_css_dif" href="/Users/Delete?id=@item.Id">Delete</a>
                 </td>
             </tr>
         }

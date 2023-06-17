@@ -6,8 +6,8 @@
 <div class="text-center">
     <h1 class="display-4">Stock</h1>
 </div>
-<a class="btn btn-primary btn-sm" href="/Stock/Create?id=@Model.ID">Create</a>
-<a class="btn btn-primary btn-sm" href="/Arsenal/Index">Back</a>
+<a class="btn btn-primary btn-sm button_css" href="/Stock/Create?id=@Model.ID">Create</a>
+<a class="btn btn-primary btn-sm button_css_dif" href="/Arsenal/Index">Back</a>
 <table class="table">
     <thead>
         <tr>
@@ -27,7 +27,7 @@
                 </td>
                 <td>@{string maintance = (item.InMaintance=="True")?"Yes":"No";} @maintance</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Stock/Edit?id=@item.ID&eqid=@Model.ID">Edit</a>
+                    <a class="btn btn-primary btn-sm button_css" href="/Stock/Edit?id=@item.ID&eqid=@Model.ID">Edit</a>
                     <a class="btn btn-danger btn-sm" href="/Stock/Delete?id=@item.ID&eqid=@Model.ID">Delete</a>
                 </td>
             </tr>

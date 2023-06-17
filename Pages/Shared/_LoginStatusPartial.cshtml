@@ -1,6 +1,6 @@
 ﻿
 @if(User.Identity.IsAuthenticated){
-    <form method="post" class="form-inline" asp-page="/Account/Logout">
+    <form method="post" class="form-inline text-white" asp-page="/Account/Logout">
         Welcome @User.Identity.Name
         <button id="logout" type="submit" class="m-lg-2 btn btn-link">Logout</button>
     </form>
