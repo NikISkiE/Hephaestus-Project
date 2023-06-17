@@ -1,4 +1,245 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Hephaestus_Project.Pages.MyEQ.MyEQModel" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\MyEQ\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Account.CreateModel" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Account\Create.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Account.EditModel" Collapsed="true">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Account\Edit.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Account.IndexModel" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Account\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Account.LogoutModel" Collapsed="true">
+    <Position X="7.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Pages\Account\Logout.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Account.AccessDeniedModel" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\AccessDenied.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Login.IndexModel" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAQEAAAAAAA=</HashCode>
+      <FileName>Pages\Account\Login.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Login.Credential" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Pages\Account\Login.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Arsenal.CreateModel" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Arsenal\Create.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Arsenal.EditModel" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Arsenal\Edit.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Arsenal.ArsenalModel" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Arsenal\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Division.MyEQModel" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Division\Eq.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Division.DivisionModel" Collapsed="true">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Division\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Stock.CreateModel" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAQAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Stock\Create.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Stock.EditModel" Collapsed="true">
+    <Position X="0.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAAQAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Stock\Edit.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Stock.StockModel" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAQAAAAAAkA=</HashCode>
+      <FileName>Pages\Stock\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Users.CreateModel" Collapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Users\Create.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Users.EditModel" Collapsed="true">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAEAAAAAAAAAABIAgAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Users\Edit.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.Users.UsersModel" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAAAAAgA=</HashCode>
+      <FileName>Pages\Users\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.ErrorModel" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAIIAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Error.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.IndexModel" Collapsed="true">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Pages.PrivacyModel" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Privacy.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hephaestus_Project.Models.AccountInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAAAAAiAAAQAAAAAQA=</HashCode>
+      <FileName>Models\AccountInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Hephaestus_Project.Models.ArsenalInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAIAAAAAAA=</HashCode>
+      <FileName>Models\ArsenalInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Hephaestus_Project.Models.DivisionInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAQABBAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DivisionInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Hephaestus_Project.Models.MyEQinfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAABEAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\MyEQinfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Hephaestus_Project.Models.StockInfo" Collapsed="true">
+    <Position X="2.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAgAAAAACAAAAAABEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\StockInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Hephaestus_Project.Models.UserInfo" Collapsed="true">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAQABBAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\UserInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Hephaestus_Project.Interface.IDatabase" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Interface Name="Hephaestus_Project.Interface.IDatabase.IUserInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Interface\IDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="Hephaestus_Project.Interface.IDatabase.IAccountData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Interface\IDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="Hephaestus_Project.Interface.IDatabase.IDivisionInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Interface\IDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="Hephaestus_Project.Interface.IDatabase.IMyEQinfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Interface\IDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="Hephaestus_Project.Interface.IDatabase.ArsenalInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Interface\IDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="Hephaestus_Project.Interface.IDatabase.StockInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Interface\IDatabase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
