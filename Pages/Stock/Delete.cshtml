@@ -11,7 +11,7 @@
         using (SqlConnection connection = new SqlConnection(constring))
         {
             connection.Open();
-            String sql = "DELETE FROM Equipment WHERE id=@id";
+            String sql = "DELETE FROM Stock WHERE id=@id";
             using (SqlCommand command = new SqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue("id", id);
@@ -22,7 +22,8 @@
         }
     }
     catch (Exception ex)
-    {       
+    {
+        Response.Redirect("/Error");
     }
 
     Response.Redirect($"/Stock/Index?id={Request.Query["eqid"]}");

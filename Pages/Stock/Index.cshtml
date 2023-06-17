@@ -12,7 +12,7 @@
     <thead>
         <tr>
             <th>Serial</th>
-            <th>User</th>
+            <th>In Possession</th>
             <th>In Maintance</th>
         </tr>
     </thead>
@@ -21,8 +21,11 @@
         {
             <tr>
                 <td>@item.Serial</td>
-                <td>@item.UserIDL @item.Name </td>
-                <td>@item.InMaintance</td>
+                <td>
+                    @{string isregister = (item.UserIDL == "None")?"Yes":"No";}
+                    @isregister
+                </td>
+                <td>@{string maintance = (item.InMaintance=="True")?"Yes":"No";} @maintance</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/Stock/Edit?id=@item.ID">Edit</a>
                     <a class="btn btn-danger btn-sm" href="/Stock/Delete?id=@item.ID&eqid=@Model.ID">Delete</a>
