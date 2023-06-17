@@ -1,0 +1,55 @@
+﻿@page
+@model Hephaestus_Project.Pages.Arsenal.EditModel
+@{
+}
+
+<div class="text-center">
+    <h1>Edit Arsenal</h1>
+</div>
+@if (Model.success)
+{
+    <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Arsenal Edited Successfully</strong>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.error != "NULL")
+{
+  <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>@Model.error</strong>
+            </div>
+        </div>
+   </div>  
+}
+<form method="post">
+    <input type="hidden" asp-for="input.Id" value="@Model.input.Id">
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.Name"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.Name" value="@Model.input.Name" />
+            <span class="text-danger" asp-validation-for="input.Name"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" asp-for="input.Type"></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" asp-for="input.Type" value="@Model.input.Type" />
+            <span class="text-danger" asp-validation-for="input.Type"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Arsenal/Index" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

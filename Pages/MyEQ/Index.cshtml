@@ -1,0 +1,39 @@
+﻿@page
+@model Hephaestus_Project.Pages.MyEQ.MyEQModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Serial</th>
+            <th>Type</th>
+            <th>In Maintance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListMyEQ)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Serial</td>
+                <td>@item.Type</td>
+                <td>
+                    @if(item.InMaintance)
+                    {
+                        <text>
+                            Yes
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            No
+                        </text>  
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

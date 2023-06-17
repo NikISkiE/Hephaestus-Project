@@ -45,40 +45,37 @@
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" asp-for="input.PermLVL"></label>
-        <div class="row mb-3">
-            <label class="col-sm-3 col-form-label" asp-for="input.PermLVL"></label>
-            <div class="col-sm-6">
-                <select class="form-control" asp-for="input.PermLVL">
-                    <option value="None" hidden selected disabled>
-                        @switch(Model.input.PermLVL){
-                            case "1":
-                                <text>
-                                    User
-                                </text>
-                            break;
-                            case "2":
-                                <text>
-                                   Commander 
-                                </text>
-                            break;
-                            case "3":
-                                <text>
-                                    Quartermaster
-                                </text>
-                            break;
-                            case "4":
-                                <text>
-                                    Admin
-                                </text>
-                            break;}
-                    </option>
-                    <option value="1">User</option>
-                    <option value="2">Commander</option>
-                    <option value="3">Quatermaster</option>
-                    <option value="4">Admin</option>
-                </select>
-                <span class="text-danger" asp-validation-for="input.PermLVL"></span>
-            </div>
+        <div class="col-sm-6">
+            <select class="form-control" asp-for="input.PermLVL">
+                <option value="None" hidden selected disabled>
+                    @switch(Model.input.PermLVL){
+                        case "1":
+                            <text>
+                                User
+                            </text>
+                        break;
+                        case "2":
+                            <text>
+                                Commander 
+                            </text>
+                        break;
+                        case "3":
+                            <text>
+                                Quartermaster
+                            </text>
+                        break;
+                        case "4":
+                            <text>
+                                Admin
+                            </text>
+                        break;}
+                </option>
+                <option value="1">User</option>
+                <option value="2">Commander</option>
+                <option value="3">Quatermaster</option>
+                <option value="4">Admin</option>
+            </select>
+            <span class="text-danger" asp-validation-for="input.PermLVL"></span>
         </div>
     </div>
 
