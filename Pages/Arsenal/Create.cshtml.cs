@@ -5,13 +5,13 @@ using Microsoft.Build.Framework;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Hephaestus_Project.Pages.Users
+namespace Hephaestus_Project.Pages.Arsenal
 {
     [Authorize(Policy = "MustBeAtleastCom")]
     public class CreateModel : PageModel
     {
         [BindProperty]
-        public UserInfo input { get; set; }
+        public ArsenalInfo input { get; set; }
         public bool success = false;
         public string error = "NULL";
         private readonly IConfiguration Configuration;
@@ -28,7 +28,7 @@ namespace Hephaestus_Project.Pages.Users
         public void OnPost() 
         {
             //no empty field
-            if (input.Name == null|| input.Surname == null || input.Division == null || input.Rank == null)
+            if (input.Name == null|| input.Type == null)
             {
                 error = "Fill All Empty Spaces";
                 return;
@@ -40,23 +40,23 @@ namespace Hephaestus_Project.Pages.Users
                 using(SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = "INSERT INTO UserData" +
-                                "(name,surname,division,rank) VALUES"+
-                                $"('{input.Name}','{input.Surname}','{input.Division}','{input.Rank}');";
+                    String sql = $"INSERT INTO Equipment(Name,Type) VALUES ('{input.Name}','{input.Type}')";
                     using(SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();
                     }
                     connection.Close();
                 }
-            }catch
+            }catch(Exception ex)
             {
-                RedirectToPage("/Error"); ;
+                //error
+                error = "Something Went Wrong";
+                return;
             }
            //success
            success = true;
 
-            Response.Redirect("/Users/Index");
+            Response.Redirect("/Arsenal/Index");
         }
     }
     

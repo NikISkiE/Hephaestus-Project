@@ -1,0 +1,36 @@
+﻿@page
+@model Hephaestus_Project.Pages.Stock.StockModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Stock</h1>
+</div>
+<a class="btn btn-primary btn-sm" href="/Stock/Create?id=@Model.ID">Create</a>
+<a class="btn btn-primary btn-sm" href="/Arsenal/Index">Back</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Serial</th>
+            <th>In Possession</th>
+            <th>In Maintance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListStock)
+        {
+            <tr>
+                <td>@item.Serial</td>
+                <td>
+                    @{string isregister = (item.UserIDL == "None")?"No":"Yes";}
+                    @isregister
+                </td>
+                <td>@{string maintance = (item.InMaintance=="True")?"Yes":"No";} @maintance</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Stock/Edit?id=@item.ID&eqid=@Model.ID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Stock/Delete?id=@item.ID&eqid=@Model.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

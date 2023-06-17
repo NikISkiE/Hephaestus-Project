@@ -56,7 +56,7 @@ namespace Hephaestus_Project.Pages.Login
                     }
                     con.Close();
                 }
-            }catch(Exception ex)
+            }catch
             {
                 return RedirectToPage("/Error");
             }
@@ -84,9 +84,10 @@ namespace Hephaestus_Project.Pages.Login
     public class Credential
     {
         [Required]
-        [Display(Name ="User Name")]
+        [Display(Name =" ")]
         public string Login { get; set; }
         [Required]
+        [Display(Name = " ")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

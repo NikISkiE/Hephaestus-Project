@@ -1,16 +1,17 @@
-using Hephaestus_Project.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Data.SqlClient;
+using Hephaestus_Project.Models;
+using Microsoft.Data.SqlClient;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
-namespace Hephaestus_Project.Pages.Account
+namespace Hephaestus_Project.Pages.Arsenal
 {
-    [Authorize(Policy = "MustBeAtleastQuater")]
+    [Authorize(Policy = "MustBeAtleastCom")]
     public class EditModel : PageModel
     {
         [BindProperty]
-        public AccountInfo input { get; set; }
+        public ArsenalInfo input { get; set; }
         public bool success = false;
         public string error = "NULL";
         private readonly IConfiguration Configuration;
@@ -22,7 +23,7 @@ namespace Hephaestus_Project.Pages.Account
 
         public void OnGet()
         {
-            input = new AccountInfo();
+            input = new ArsenalInfo();
             String id = Request.Query["id"];
             //DB connection
             try
@@ -31,34 +32,35 @@ namespace Hephaestus_Project.Pages.Account
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM AccountData WHERE id=@id";
+                    String sql = "SELECT * FROM Equipment WHERE id=@id";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("id", id);
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using(SqlDataReader reader = command.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if(reader.Read())
                             {
-                                input.Id = "" + reader.GetInt32(0);
-                                input.Login = reader.GetString(1);
-                                input.Password = reader.GetString(2);
-                                input.PermLVL = reader.GetInt32(3).ToString();
+                                input.Id = reader.GetInt32(0).ToString();
+                                input.Name = reader.GetString(1);
+                                input.Type = reader.GetString(2);
                             }
                         }
                     }
                     connection.Close();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                RedirectToPage("/Error");
+                //error
+                error = "Something Went Wrong";
+                return;
             }
         }
 
         public void OnPost()
         {
             //no empty field
-            if (input.Login == null || input.Password == null || input.PermLVL == null)
+            if (input.Name == null || input.Type == null)
             {
                 error = "Fill All Empty Spaces";
                 return;
@@ -70,9 +72,7 @@ namespace Hephaestus_Project.Pages.Account
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = "UPDATE AccountData " +
-                                 $"SET login='{input.Login}', password='{input.Password}', permlvl='{input.PermLVL}'" +
-                                 $"WHERE id={input.Id}";
+                    String sql = $"UPDATE Equipment SET Name='{input.Name}', Type='{input.Type}' WHERE ID='{input.Id}'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();
@@ -80,15 +80,16 @@ namespace Hephaestus_Project.Pages.Account
                     connection.Close();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                RedirectToPage("/Error");
+                //error
+                error = "Something Went Wrong";
+                return;
             }
 
-            Response.Redirect($"/Account/Index?id={input.Id}");
-
+            Response.Redirect("/Arsenal/Index");
+        
         }
 
     }
 }
-

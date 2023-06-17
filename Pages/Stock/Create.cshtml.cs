@@ -1,20 +1,17 @@
 using Hephaestus_Project.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Microsoft.Data.SqlClient;
-using Hephaestus_Project.Interface;
+using System.Data.SqlClient;
 
-namespace Hephaestus_Project.Pages.Account
+namespace Hephaestus_Project.Pages.Stock
 {
-    [Authorize(Policy = "MustBeAtleastQuater")]
     public class CreateModel : PageModel
     {
-        [BindProperty]
-        public AccountInfo input { get; set; } = new AccountInfo();
-        public bool success = false;
         public string error = "NULL";
+        public bool success = false;
+        public string EQID { get; set; }
+        [BindProperty]
+        public StockInfo input { get; set; }
         private readonly IConfiguration Configuration;
 
         public CreateModel(IConfiguration configuration)
@@ -23,19 +20,18 @@ namespace Hephaestus_Project.Pages.Account
         }
         public void OnGet()
         {
-            String id = Request.Query["id"];
-            input.UserID = id;
-
+            EQID = Request.Query["id"];
         }
 
         public void OnPost()
         {
-            //no empty field
-            if (input.Login == null || input.Password == null || input.PermLVL == null)
+            if (input.Serial == null)
             {
-                error = "Fill All Empty Spaces";
+                error = "Serial can't be null";
                 return;
             }
+            if (input.InMaintance == null) input.InMaintance = "0";
+            if (input.UserIDL == null) input.UserIDL = "NULL";
             //Database script
             try
             {
@@ -45,9 +41,9 @@ namespace Hephaestus_Project.Pages.Account
                 {
                     //Insert new data
                     connection.Open();
-                    String sql = "INSERT INTO AccountData" +
-                                "(login,password,permlvl,userid) VALUES" +
-                                $"('{input.Login}','{input.Password}','{input.PermLVL}','{input.UserID}');";
+                    String sql = "INSERT INTO Stock" +
+                                "(Serial,UserIDL,Inmaintance,EquipmentID) VALUES" +
+                                $"('{input.Serial}',{input.UserIDL},{input.InMaintance},{input.EquipmentID});";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();
@@ -55,16 +51,18 @@ namespace Hephaestus_Project.Pages.Account
 
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                RedirectToPage("/Error");
+                //error
+                error = "Something Went Wrong";
+                return;
             }
 
 
             //success
             success = true;
 
-            Response.Redirect("/Users/Index");
+            Response.Redirect($"/Stock/Index?id={input.EquipmentID}");
         }
     }
 }

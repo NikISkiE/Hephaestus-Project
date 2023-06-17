@@ -1,0 +1,31 @@
+﻿@page
+@model Hephaestus_Project.Pages.Division.DivisionModel
+@{
+}
+<div class="text-center">
+    <h1 class="display-4">Inspect</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Division</th>
+            <th>Rank</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListDivision)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Division</td>
+                <td>@item.Rank</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Division/Eq?id=@item.Id">Show equipment</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

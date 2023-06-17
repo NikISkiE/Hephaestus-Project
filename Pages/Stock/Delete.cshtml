@@ -1,18 +1,17 @@
 ﻿@page
 @using System.Data.SqlClient;
-@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Configuration;
 @inject IConfiguration Configuration
 @{
-
     try
     {
-        String id = Request.Query["id"];
+        String id = Request.Query["ID"];        
         var constring = Configuration.GetSection("ConnectionStrings")["DefaultString"];
 
         using (SqlConnection connection = new SqlConnection(constring))
         {
             connection.Open();
-            String sql = "DELETE FROM AccountData WHERE id=@id";
+            String sql = "DELETE FROM Stock WHERE id=@id";
             using (SqlCommand command = new SqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue("id", id);
@@ -22,10 +21,11 @@
             connection.Close();
         }
     }
-    catch
+    catch (Exception ex)
     {
-        RedirectToPage("/Error");
+        Response.Redirect("/Error");
     }
 
-    Response.Redirect("/Users/Index");
+    Response.Redirect($"/Stock/Index?id={Request.Query["eqid"]}");
 }
+

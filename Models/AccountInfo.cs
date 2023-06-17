@@ -1,9 +1,10 @@
-﻿using Microsoft.Build.Framework;
+﻿using Hephaestus_Project.Interface;
+using Microsoft.Build.Framework;
 using System.ComponentModel;
 
 namespace Hephaestus_Project.Models
 {
-    public class AccountInfo
+    public class AccountInfo : IDatabase.IAccountData
     {
         public string Id { get; set; }
         [Required]
@@ -14,6 +15,7 @@ namespace Hephaestus_Project.Models
         [DisplayName("Permission")]
         public string PermLVL { get; set; }
         public string Created_At { get; set; }
-        public string UserID { get; set; } = "NULL";
+        public string UserID { get; set; }
     }
+
 }

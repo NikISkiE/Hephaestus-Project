@@ -4,17 +4,20 @@ using Hephaestus_Project.Models;
 using Microsoft.Data.SqlClient;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Drawing;
 
-namespace Hephaestus_Project.Pages.Users
+namespace Hephaestus_Project.Pages.Stock
 {
     [Authorize(Policy = "MustBeAtleastCom")]
     public class EditModel : PageModel
     {
         [BindProperty]
-        public UserInfo input { get; set; }
+        public StockInfo input { get; set; }
+        public List<UserInfo> users = new List<UserInfo>();
         public bool success = false;
         public string error = "NULL";
         private readonly IConfiguration Configuration;
+        public string EQID;
 
         public EditModel(IConfiguration configuration)
         {
@@ -23,7 +26,8 @@ namespace Hephaestus_Project.Pages.Users
 
         public void OnGet()
         {
-            input = new UserInfo();
+            EQID = Request.Query["eqid"];
+            input = new StockInfo();
             String id = Request.Query["id"];
             //DB connection
             try
@@ -32,7 +36,7 @@ namespace Hephaestus_Project.Pages.Users
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM UserData WHERE id=@id";
+                    String sql = $"SELECT ID, Serial, UserIDL, InMaintance FROM Stock WHERE ID=@id";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("id", id);
@@ -41,26 +45,39 @@ namespace Hephaestus_Project.Pages.Users
                             if(reader.Read())
                             {
                                 input.Id = "" + reader.GetInt32(0);
-                                input.Name = reader.GetString(1);
-                                input.Surname = reader.GetString(2);
-                                input.Division = reader.GetString(3);
-                                input.Rank = reader.GetString(4);
+                                input.Serial = reader.GetString(1);
+                                input.UserIDL = (reader.IsDBNull(2)) ? "None" : reader.GetInt32(2).ToString();
+                                input.InMaintance = "" + reader.GetBoolean(3);
                             }
                         }
                     }
+                    sql = $"SELECT ID,Name FROM UserData";
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                UserInfo claims = new UserInfo();
+                                claims.Id = "" + reader.GetInt32(0);
+                                claims.Name = reader.GetString(1);
+                            users.Add(claims);
+                            }
+                        }
                     connection.Close();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                RedirectToPage("/Error");
+                //error
+                error = "Something Went Wrong";
+                return;
             }
         }
 
         public void OnPost()
         {
             //no empty field
-            if (input.Name == null || input.Surname == null || input.Division == null || input.Rank == null)
+            if (input.Serial == null)
             {
                 error = "Fill All Empty Spaces";
                 return;
@@ -72,9 +89,7 @@ namespace Hephaestus_Project.Pages.Users
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
-                    String sql = "UPDATE UserData "+
-                                 $"SET name='{input.Name}', surname='{input.Surname}', division='{input.Division}', rank='{input.Rank}' "+
-                                 $"WHERE id={input.Id}";
+                    String sql = $"UPDATE Stock SET Serial='{input.Serial}', UserIDL={input.UserIDL}, InMaintance={input.InMaintance} WHERE ID={input.Id}";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.ExecuteNonQuery();
@@ -82,12 +97,14 @@ namespace Hephaestus_Project.Pages.Users
                     connection.Close();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                RedirectToPage("/Error");
+                //error
+                error = "Something Went Wrong";
+                return;
             }
 
-            Response.Redirect("/Users/Index");
+            Response.Redirect($"/Stock/Index?id={input.EquipmentID}");
         
         }
 
