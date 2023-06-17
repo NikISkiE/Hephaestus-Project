@@ -1,9 +1,10 @@
-﻿using Microsoft.Build.Framework;
+﻿using Hephaestus_Project.Interface;
+using Microsoft.Build.Framework;
 using System.ComponentModel;
 
 namespace Hephaestus_Project.Models
 {
-    public class MyEQinfo
+    public class MyEQinfo : IDatabase.IMyEQinfo
     {
         public string Serial { get; set; }
         [Required]

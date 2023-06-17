@@ -1,8 +1,9 @@
-﻿using Microsoft.Build.Framework;
+﻿using Hephaestus_Project.Interface;
+using Microsoft.Build.Framework;
 
 namespace Hephaestus_Project.Models
 {
-    public class UserInfo
+    public class UserInfo : IDatabase.IUserInfo
     {
         public string Id { get; set; }
         [Required]

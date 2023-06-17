@@ -1,9 +1,10 @@
-﻿using Microsoft.Build.Framework;
+﻿using Hephaestus_Project.Interface;
+using Microsoft.Build.Framework;
 using System.ComponentModel;
 
 namespace Hephaestus_Project.Models
 {
-    public class AccountInfo
+    public class AccountInfo : IDatabase.IAccountData
     {
         public string Id { get; set; }
         [Required]
