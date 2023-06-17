@@ -8,7 +8,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Hephaestus_Project.Pages.Stock
 {
-    [Authorize(Policy = "MustBeAtleastCom")]
+    [Authorize(Policy = "MustBeAtleastQuater")]
     public class StockModel : PageModel
     {
         private readonly IConfiguration Configuration;
