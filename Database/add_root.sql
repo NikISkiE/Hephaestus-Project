@@ -1,0 +1,1 @@
+INSERT INTO AccountData(login,password,permlvl) VALUES ('root','admin1',4)
