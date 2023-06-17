@@ -1,0 +1,31 @@
+﻿@page
+@using System.Data.SqlClient;
+@using Microsoft.Extensions.Configuration;
+@inject IConfiguration Configuration
+@{
+
+    try
+    {
+        String id = Request.Query["id"];
+        var constring = Configuration.GetSection("ConnectionStrings")["DefaultString"];
+
+        using (SqlConnection connection = new SqlConnection(constring))
+        {
+            connection.Open();
+            String sql = "DELETE FROM Equipment WHERE id=@id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("id", id);
+
+                command.ExecuteNonQuery();
+            }
+            connection.Close();
+        }
+    }
+    catch (Exception ex)
+    {       
+    }
+
+    Response.Redirect("/Arsenal/Index");
+}
+
