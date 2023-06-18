@@ -52,7 +52,7 @@ namespace Hephaestus_Project.Pages.MyEQ
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                BadRequest(ex);
             }
         }
     }

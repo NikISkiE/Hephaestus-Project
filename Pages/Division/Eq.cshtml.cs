@@ -52,7 +52,7 @@ namespace Hephaestus_Project.Pages.Division
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                BadRequest(ex);
             }
         }
     }

@@ -5,20 +5,21 @@
 <div class="text-center">
     <h1 class="display-4">User Account</h1>
 </div>
-<a class="btn btn-primary btn-sm" href="/Users/Index">Back</a>
+<a class="btn btn-primary btn-sm button_css" href="/Users/Index">Back</a>
 <table class="table">
     <thead>
         <tr>
-            <th>LOGIN</th>
-            <th>PASSWORD</th>
-            <th>PERMISSION</th>
-            <th>CREATED_AT</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Permission</th>
+            <th>Created at</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
             <tr>
                 <td>@Model.input.Login</td>
-                <td>@Model.input.Password</td>
+                <td>#######</td>
                 <td>@switch(Model.input.PermLVL){
                     case "1":
                         <text>
@@ -44,8 +45,8 @@
                 }</td>
                 <td>@Model.input.Created_At</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Account/Edit?id=@Model.input.Id">Edit</a>
-                    <a class="btn btn-danger btn-sm" href="/Account/Delete?id=@Model.input.Id">Delete</a>
+                    <a class="btn btn-primary btn-sm button_css" href="/Account/Edit?id=@Model.input.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm button_css_dif" href="/Account/Delete?id=@Model.input.Id">Delete</a>
                 </td>
              </tr>       
     </tbody>

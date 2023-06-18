@@ -1,8 +1,9 @@
-﻿using Microsoft.Build.Framework;
+﻿using Hephaestus_Project.Interface;
+using Microsoft.Build.Framework;
 
 namespace Hephaestus_Project.Models
 {
-    public class ArsenalInfo
+    public class ArsenalInfo : IDatabase.ArsenalInfo
     {
         public string Id { get; set; }
         [Required]

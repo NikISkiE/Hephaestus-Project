@@ -6,7 +6,7 @@ using Hephaestus_Project.Models;
 
 namespace Hephaestus_Project.Pages.Arsenal
 {
-    [Authorize(Policy = "MustBeAtleastCom")]
+    [Authorize(Policy = "MustBeAtleastQuater")]
     public class ArsenalModel : PageModel
     {
         private readonly IConfiguration Configuration;
@@ -46,7 +46,7 @@ namespace Hephaestus_Project.Pages.Arsenal
                 }
             }catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                BadRequest(ex);
             }
         }
     }
